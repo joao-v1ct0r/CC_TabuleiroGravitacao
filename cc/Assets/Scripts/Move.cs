@@ -24,11 +24,6 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i; )
-        {
-
-        }
-
         transform.position = new Vector3(casas[indexCasas].transform.position.x, 6.109f, casas[indexCasas].transform.position.z);
 
         if (Input.GetKeyDown(KeyCode.P))

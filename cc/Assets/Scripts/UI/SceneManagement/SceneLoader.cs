@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [Header("SceneLoaderConfig")]
-    [SerializeField] private CanvasGroup loadingOverlay;
+    [SerializeField] private GameObject loadingOverlay;
     
     //fadetime
     [Range(0.01f, 3.0f)]
-    [SerializeField] private float fadeTime = 0.5f;
+    [SerializeField]    
+    private float fadeTime = 0.5f;
 
 
     //estancia estatica da script
@@ -36,6 +37,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadSceneAsync(string sceneName)
     {
+        sceneName = "Main";
         StartCoroutine(PerformLoadSceneAsync(sceneName));
     }
 
@@ -56,22 +58,29 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        float start = 0;
-        float end = 1;
+        loadingOverlay.SetActive(active)
+        yield return null;
 
-        // Delta S / Delta T (end - start)/fade time
+        /* depois voltar
+float start = 0;
+float end = 1;
 
-        float speed = (end - start) / fadeTime;
+// Delta S / Delta T (end - start)/fade time
 
-        loadingOverlay.alpha = start;
 
-        while(loadingOverlay.alpha < end)
-        {
-            loadingOverlay.alpha += speed * Time.deltaTime;
-            yield return null;
-        }
+float speed = (end - start) / fadeTime;
 
-        loadingOverlay.alpha = end;
+loadingOverlay.alpha = start;
+
+while(loadingOverlay.alpha < end)
+{
+    loadingOverlay.alpha += speed * Time.deltaTime;
+    yield return null;
+}
+
+loadingOverlay.alpha = end;
+
+*/
     }
 
     private IEnumerator FadeOut()
@@ -84,6 +93,7 @@ public class SceneLoader : MonoBehaviour
         float speed = (end - start) / fadeTime;
 
         loadingOverlay.alpha = start;
+
         while (loadingOverlay.alpha > end)
         {
             loadingOverlay.alpha += speed * Time.deltaTime;

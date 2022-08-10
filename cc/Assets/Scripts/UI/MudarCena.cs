@@ -9,6 +9,8 @@ public class MudarCena : MonoBehaviour
 
     public GameObject quitConfirm;
 
+    public bool active;
+
     public void ChangeScene()
     {
         SceneManager.LoadScene(scene);
@@ -17,17 +19,22 @@ public class MudarCena : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        Debug.Log("Saiu");
     }
 
-    public void QuitConfirm()
+    public void SetActive()
     {
-        if (quitConfirm.activeInHierarchy == false)
-        {
-            quitConfirm.SetActive(true);
-        }
-        else
+        quitConfirm.SetActive(active);
+    }
+
+    public void Opcoes()
+    {
+        if (quitConfirm.activeInHierarchy == true)
         {
             quitConfirm.SetActive(false);
+            return;
         }
+
+        quitConfirm.SetActive(true);
     }
 }

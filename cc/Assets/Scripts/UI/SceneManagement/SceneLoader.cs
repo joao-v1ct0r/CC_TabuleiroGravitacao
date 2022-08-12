@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [Header("SceneLoaderConfig")]
-    [SerializeField] private GameObject loadingOverlay;
+    [SerializeField] private CanvasGroup loadingOverlay;
     
     //fadetime
     [Range(0.01f, 3.0f)]
@@ -37,7 +37,6 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadSceneAsync(string sceneName)
     {
-        sceneName = "Main";
         StartCoroutine(PerformLoadSceneAsync(sceneName));
     }
 
@@ -58,29 +57,24 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        loadingOverlay.SetActive(active)
-        yield return null;
+        float start = 0;
+        float end = 1;
 
-        /* depois voltar
-float start = 0;
-float end = 1;
-
-// Delta S / Delta T (end - start)/fade time
+        // Delta S / Delta T (end - start)/fade time
 
 
-float speed = (end - start) / fadeTime;
+        float speed = (end - start) / fadeTime;
 
-loadingOverlay.alpha = start;
+        loadingOverlay.alpha = start;
 
-while(loadingOverlay.alpha < end)
-{
-    loadingOverlay.alpha += speed * Time.deltaTime;
-    yield return null;
-}
+        while(loadingOverlay.alpha < end)
+        {
+            loadingOverlay.alpha += speed * Time.deltaTime;
+            yield return null;
+        }
 
-loadingOverlay.alpha = end;
+        loadingOverlay.alpha = end;
 
-*/
     }
 
     private IEnumerator FadeOut()

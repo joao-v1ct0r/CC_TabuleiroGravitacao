@@ -18,6 +18,10 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (indexCasas < 0 || indexCasas > 50)
+        {
+            Debug.Log("50<indexCasas<50");
+        }
         transform.position = new Vector3(casas[indexCasas].transform.position.x, 6.109f, casas[indexCasas].transform.position.z);
     }
 

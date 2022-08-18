@@ -7,7 +7,7 @@ public class Move : MonoBehaviour
     public GameObject[] casas;
     public static int indexCasas;
 
-    public bool move;
+    public static bool move;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,11 @@ public class Move : MonoBehaviour
         {
             Debug.Log("50<indexCasas<50");
         }
-        transform.position = new Vector3(casas[indexCasas].transform.position.x, 6.109f, casas[indexCasas].transform.position.z);
+
+        if (move)
+        {
+            Invoke("DelayMovimentacao", Variable_Controller.delay);
+        }
     }
 
     // Update is called once per frame
@@ -34,5 +38,12 @@ public class Move : MonoBehaviour
         {
             indexCasas = 0;
         }
+    }
+
+    public void DelayMovimentacao()
+    {
+        transform.position = new Vector3(casas[indexCasas].transform.position.x, 6.109f, casas[indexCasas].transform.position.z);
+        move = false;
+        return;
     }
 }

@@ -28,6 +28,8 @@ public class Dice : MonoBehaviour
 
     private void Roll()
     {
+        Move.move = true;
+
         collision.SetActive(true);
         float dirX = Random.Range(0, 500);
         float dirY = Random.Range(0, 500);

@@ -1,0 +1,21 @@
+03 - Modelo antigo geocentrismo
+
+06 - Modelo de pitolomeu
+
+12 - Modelo de Copernico
+
+15 - No modelo
+
+20 - 1 lei de kepler
+
+22 - 2 lei de kepler
+
+24 - 3 lei de kepler
+
+33 - velocidade de escape ou orbital
+
+35 - Newton
+
+40 - gravitação universal
+
+44 - campo gravitacional
